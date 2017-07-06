@@ -1,0 +1,40 @@
+<!-- load all of resource authors  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Authors</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+  <h1>Arrived at Authors page!</h1>
+  <a href="/authors/new">Add Your Favorite Author</a> <br>
+  <a href="/books">Check out the books!</a>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Is Alive?</th>
+      <th>Books</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+        <% for(const author of authors) { %>
+          <tr>
+            <td><a href="/authors/<%= author._id %>"><%= author.name %></a></td>
+            <td><%= author.age%></td>
+            <td><%= author.isAlive %></td>
+            <td>
+              <% for (const book of author.books) { %>
+                <p><%= book.title %></p>
+              <% } %>
+            </td>
+            <td>Future Actions</td>
+          </tr>
+        <% } %>
+    </tbody>
+  </table>
+</body>
+</html>

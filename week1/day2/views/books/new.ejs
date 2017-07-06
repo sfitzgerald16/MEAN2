@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Book</title>
+</head>
+<body>
+  <h1>Create a Book</h1>
+  <form action="/books" method='post'>
+    <fieldset>
+      <legend>Books</legend>
+      <div><label for="title">Title<input type="text" name='title' required></label></div>
+      <div><label for="pageCount">Pages<input type="number" name='pageCount' required></label></div>
+      <div><label for="year">Year<input type="number" name='year' required></label></div>
+      <div><label for="author">Author
+        <select name="author" id="">
+          <option value="" selected disabled>Selected an Option</option>
+          <% for (const author of authors) {%>
+            <option value="<%= author._id %>"><%= author.name %></option>
+          <%} %>
+        </select>
+      </label></div>
+      <button>Add Book</button>
+    </fieldset>
+  </form>
+</body>
+</html>

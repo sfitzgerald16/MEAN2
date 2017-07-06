@@ -1,0 +1,38 @@
+<!-- load all of resource books -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Books</title>
+</head>
+<body>
+  <h1>Books List</h1>
+  <a href="/books/new">Add a new book</a>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Page Count</th>
+        <th>Published Year</th>
+        <th>Author</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for (const book of books) { %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.pageCount %></td>
+          <td><%= book.year %></td>
+          <td><%= book.author %></td>
+          <td>
+            Watch this space
+          </td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</body>
+</html>

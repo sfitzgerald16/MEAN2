@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Greetings New Author</h1>
+
+  <% if (typeof errors !== 'undefined') { %>
+    <% for (const error of errors) { %>
+      <p class="red alert warning"><%= error %></p>
+    <% } %>
+  <%} %>
+
+
+  <form action="/authors" method="post">
+    <div><label for="name"></label><input type="text" name="name" id="name" placeholder="author name"></div>
+    <div><label for="age"></label><input type="number" name="age" id="age" placeholder="age"></div>
+    <div><label for="isalive">Is Alive?</label>
+          <input type="radio" name="isAlive" id="living" value="true">Living
+          <input type="radio" name="isAlive" id="deceased" value="false">Deceased
+    </div>
+    <button>Submit</button>
+  </form>
+</body>
+</html>
