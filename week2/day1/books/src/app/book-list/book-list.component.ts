@@ -7,14 +7,77 @@ import { Book } from '../book';
 })
 
 export class BookListComponent {
-  books: Array<Book> = [{
-    id: 6,
-    title: 'Slaughter House 5',
-    pages: 354,
-    year: 1972,
-    author: 'Kurt Vonnegut',
-    publisher: 'random house'
-  }];
+  books: Array<Book> = [
+  {
+    id: 10,
+    title: 'stranger in a strange land',
+    author: 'robert heinlein',
+    publisher: 'G. P. Punam\'s Sons',
+    year: 1961,
+    pages: 408
+  },
+  {
+    id: 11,
+    title: 'where the red fern grows',
+    author: 'wilson rawls',
+    publisher: 'Doubleday',
+    year: 1961,
+    pages: 245
+  },
+  {
+    id: 12,
+    title: 'a fire upon the deep',
+    author: 'vernor vinge',
+    publisher: 'Tor Books',
+    year: 1992,
+    pages: 391
+  },
+  {
+    id: 13,
+    title: 'a game of thrones',
+    author: 'george r. r. martin',
+    publisher: 'Bantam Spectra',
+    year: 1996,
+    pages: 694
+  },
+  {
+    id: 14,
+    title: 'leviathan wakes',
+    author: 'james s. a. corey',
+    publisher: 'Orbit Books',
+    year: 2011,
+    pages: 582
+  },
+  {
+    id: 15,
+    title: 'foundation',
+    author: 'isaac asimov',
+    year: 1951,
+    pages: 255,
+    publisher: 'Gnome Press'
+  },
+  {
+    id: 16,
+    title: 'slaughterhouse-five',
+    author: 'kurt vonnegut',
+    year: 1969,
+    pages: 190,
+    publisher: 'Delacorte Press'
+  }
+];
+
+  book: Book = new Book();
+
+  constructor() {
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+
+    console.log(this.book);
+
+    this.books.push(this.book);
+  }
 }
 
 
