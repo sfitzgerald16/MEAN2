@@ -2,7 +2,7 @@
 
 <fieldset>
   <legend>Add a Book</legend>
-  <form (submit)='onSubmit($event)' #newBook='ngForm'>
+  <form (submit)='onSubmit($event) || newBook.reset()' #newBook='ngForm'>
     <div class="form-group">
       <label for="title">Title:</label>
       <input id='title' type="text" class="form-control" name='title' [(ngModel)]='book.title' #title='ngModel' minlength='4' required>
@@ -10,7 +10,6 @@
         <div *ngIf='title.errors.required' class='alert alert-danger'>You must enter a book title</div>
         <div *ngIf='title.errors.minlength' class='alert alert-danger'>Title must be at least {{title.errors.minlength.requiredLength}} characters in length.  You only have {{title.errors.minlength.actualLength}}</div>
       </div>
-
     </div>
     <div class="form-group">
       <label for="author">Author:</label>
@@ -32,13 +31,11 @@
         <div *ngIf='publisher.errors.minlength' class='alert alert-danger'>publisher must be at least {{publisher.errors.minlength.requiredLength}} characters in length.  You only have {{publisher.errors.minlength.actualLength}}</div>
       </div>
     </div>
-
-    {{ newBook.invalid }}
-    <button [disabled]='newBook.invalid' [hidden]='newBook.invalid'>Submit</button>
+    <button [disabled]='newBook.invalid' [hidden]='newBook.invalid' class="btn btn-md btn-success">Submit</button>
   </form>
 </fieldset>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
@@ -51,7 +48,7 @@
   <tbody>
     <tr *ngFor='let book of books'>
       <td>{{book.id}}</td>
-      <td>{{book.title}}</td>
+      <td>{{book.title | titleize:['of', 'a']}}</td>
       <td>{{book.year}}</td>
       <td>{{book.author}}</td>
       <td></td>

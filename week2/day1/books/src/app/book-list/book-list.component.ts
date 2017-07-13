@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
+import { TitleizePipe } from '../titleize.pipe';
 
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
+  styleUrls: ['./book-list.component.css'],
+  providers: [TitleizePipe]
 })
 
-export class BookListComponent {
+export class BookListComponent implements OnInit {
   books: Array<Book> = [
   {
     id: 10,
@@ -68,15 +71,27 @@ export class BookListComponent {
 
   book: Book = new Book();
 
-  constructor() {
+  constructor(private titleize: TitleizePipe) {
   }
 
-  onSubmit(event) {
+  ngOnInit() {
+    this.titleCaseAuthors();
+  }
+
+  titleCaseAuthors(): void {
+    this.books.forEach(book => {
+      book.author = this.titleize.transform(book.author);
+    });
+  }
+
+  onSubmit(event: Event): void {
     event.preventDefault();
 
     console.log(this.book);
 
     this.books.push(this.book);
+
+    this.book = new Book();
   }
 }
 
