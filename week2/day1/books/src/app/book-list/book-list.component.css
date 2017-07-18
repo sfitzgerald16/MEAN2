@@ -9,3 +9,7 @@
 input.ng-invalid.ng-touched:focus {
   border: 2px solid orange;
 }
+.selected{
+  background-color: blue !important;
+  color: white;
+}

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { TitleizePipe } from './titleize.pipe';
 import { BookFormComponent } from './book-form/book-form.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 // TitleizePipe.skipWords = ['of'];
 
@@ -15,6 +16,7 @@ import { BookFormComponent } from './book-form/book-form.component';
     BookListComponent,
     TitleizePipe,
     BookFormComponent,
+    BookDetailsComponent,
   ],
   imports: [
     BrowserModule,
