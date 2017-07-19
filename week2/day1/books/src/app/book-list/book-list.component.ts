@@ -38,6 +38,25 @@ export class BookListComponent implements OnInit {
     console.log('Selection made.', book);
     this.selectedBook = book === this.selectedBook ? null : book;
   }
+
+  removeBook(book: Book) {
+      if (book === this.selectedBook) {
+        this.onSelect(book);
+      }
+      this.books.splice(this.books.indexOf(book), 1);
+  }
+
+  onTdClick(event: Event) {
+    event.stopPropagation();
+    console.log('TD CLICK');
+  }
+
+  updateSelectedBook(book: Book) {
+    console.log('updating book in list component', book);
+
+    this.books.splice(this.books.indexOf(this.selectedBook), 1, book);
+  }
+
 }
 
 

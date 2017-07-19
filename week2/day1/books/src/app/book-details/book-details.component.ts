@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Book } from '../book';
 
 @Component({
@@ -8,5 +8,14 @@ import { Book } from '../book';
 
 export class BookDetailsComponent {
   @Input() book: Book;
+
+  @Output() updatedBook = new EventEmitter<Book>();
+
+  onUpdate(book: Book, event: Event) {
+    event.preventDefault();
+    console.log('updateing book', book);
+
+    this.updatedBook.emit(book);
+  }
 
 }

@@ -16,8 +16,10 @@
       <td>{{book.title | titleize:['of', 'a']}}</td>
       <td>{{book.year}}</td>
       <td>{{book.author}}</td>
-      <td></td>
+      <td (click) = 'onTdClick($event)'>
+        <button (click) = 'removeBook(book)' class="btn btn-danger btn-sm">Remove</button>
+      </td>
     </tr>
   </tbody>
 </table>
-<book-details [book]='selectedBook'></book-details>
+<book-details (updatedBook)='updateSelectedBook($event)' [book]='selectedBook'></book-details>
