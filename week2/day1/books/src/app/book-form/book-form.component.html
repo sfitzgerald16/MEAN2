@@ -1,6 +1,6 @@
 <fieldset>
   <legend>Add a Book</legend>
-  <form (submit)='onSubmit($event) || newBook.reset()' #newBook='ngForm'>
+  <form (submit)='onSubmit(newBook)' #newBook='ngForm'>
     <div class="form-group">
       <label for="title">Title:</label>
       <input id='title' type="text" class="form-control" name='title' [(ngModel)]='book.title' #title='ngModel' minlength='4' required>

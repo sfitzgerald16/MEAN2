@@ -1,4 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+
+import { BookService } from '../services/book.service';
 import { Book } from '../book';
 
 @Component({
@@ -11,14 +13,20 @@ export class BookFormComponent {
 
   book: Book = new Book();
 
-  onSubmit(event: Event): void {
-    event.preventDefault();
+  constructor(private bookService: BookService) {}
+
+  onSubmit(form): void {
+    // event.preventDefault();
 
     console.log(this.book);
 
     // this.books.push(this.book);
-    this.bookEmitter.emit(this.book);
+    // this.bookEmitter.emit(this.book);
 
-    this.book = new Book();
+    this.bookService.createBook(this.book)
+      .then(book => this.bookEmitter.emit(book))
+      .then(() => this.book = new Book())
+      .then(() => form.reset())
+      .catch(console.log);
   }
 }

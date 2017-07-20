@@ -1,4 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+
+import { BookService } from '../services/book.service';
 import { Book } from '../book';
 
 @Component({
@@ -11,11 +13,17 @@ export class BookDetailsComponent {
 
   @Output() updatedBook = new EventEmitter<Book>();
 
+  constructor(private bookService: BookService) {}
+
   onUpdate(book: Book, event: Event) {
     event.preventDefault();
     console.log('updateing book', book);
 
-    this.updatedBook.emit(book);
+    // this.updatedBook.emit(book);
+
+    this.bookService.updateBook(book)
+      .then(updatedBook => this.updatedBook.emit(updatedBook))
+      .catch(console.log);
   }
 
 }

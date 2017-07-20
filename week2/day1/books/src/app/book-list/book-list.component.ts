@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { TitleizePipe } from '../titleize.pipe';
-import { BOOKS } from '../data/books.data';
+import { BookService } from '../services/book.service';
+// import { BOOKS } from '../data/books.data';
 
 @Component({
   selector: 'app-book-list',
@@ -11,16 +12,25 @@ import { BOOKS } from '../data/books.data';
 })
 
 export class BookListComponent implements OnInit {
-  books: Array<Book> = BOOKS;
+  books: Array<Book> = [];
 
   selectedBook: Book;
 
+  filter: Book = new Book(false);
 
-  constructor(private titleize: TitleizePipe) {
+
+  constructor(private titleize: TitleizePipe, private bookService: BookService) {
   }
 
   ngOnInit() {
-    this.titleCaseAuthors();
+    this.getBooks();
+  }
+
+  getBooks() {
+    this.bookService.getBooks()
+      .then(books => this.books = books)
+      .then(() => this.titleCaseAuthors())
+      .catch(console.log);
   }
 
   titleCaseAuthors(): void {
@@ -43,7 +53,12 @@ export class BookListComponent implements OnInit {
       if (book === this.selectedBook) {
         this.onSelect(book);
       }
-      this.books.splice(this.books.indexOf(book), 1);
+      // this.books.splice(this.books.indexOf(book), 1);
+
+      this.bookService.removeBook(book.id)
+        .then(() => this.books.splice(this.books.indexOf(book)))
+        .catch(console.log);
+
   }
 
   onTdClick(event: Event) {
