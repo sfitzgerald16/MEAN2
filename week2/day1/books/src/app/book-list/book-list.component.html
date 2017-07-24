@@ -14,7 +14,7 @@
   </thead>
   <tbody>
     <tr (click) = 'onSelect(book)' *ngFor='let book of books | search:filter' [class.selected]='selectedBook === book' >
-      <td>{{book.id}}</td>
+      <td>{{book._id}}</td>
       <td>{{book.title | titleize:['of', 'a']}}</td>
       <td>{{book.year}}</td>
       <td>{{book.author}}</td>

@@ -1,7 +1,7 @@
 <fieldset *ngIf='book'>
   <legend>Update Book</legend>
   <form (submit)='onUpdate(updateBook.value, $event) || updateBook.reset()' #updateBook='ngForm'>
-    <input type="hidden" name="id" [ngModel]='book.id'>
+    <input type="hidden" name="_id" [ngModel]='book._id'>
     <div class="form-group">
       <label for="title">Title:</label>
       <input id='title' type="text" class="form-control" name='title' [ngModel]='book.title' #title='ngModel' minlength='4' required>

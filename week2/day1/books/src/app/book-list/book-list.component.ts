@@ -16,7 +16,7 @@ export class BookListComponent implements OnInit {
 
   selectedBook: Book;
 
-  filter: Book = new Book(false);
+  filter: Book = new Book();
 
 
   constructor(private titleize: TitleizePipe, private bookService: BookService) {
@@ -28,7 +28,10 @@ export class BookListComponent implements OnInit {
 
   getBooks() {
     this.bookService.getBooks()
-      .then(books => this.books = books)
+      .then(books => {
+        console.log('getting books from server');
+        this.books = books;
+      })
       .then(() => this.titleCaseAuthors())
       .catch(console.log);
   }
@@ -55,7 +58,7 @@ export class BookListComponent implements OnInit {
       }
       // this.books.splice(this.books.indexOf(book), 1);
 
-      this.bookService.removeBook(book.id)
+      this.bookService.removeBook(book._id)
         .then(() => this.books.splice(this.books.indexOf(book)))
         .catch(console.log);
 

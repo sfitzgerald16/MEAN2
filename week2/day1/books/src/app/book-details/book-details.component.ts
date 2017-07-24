@@ -17,11 +17,12 @@ export class BookDetailsComponent {
 
   onUpdate(book: Book, event: Event) {
     event.preventDefault();
-    console.log('updateing book', book);
+    console.log('updating book', book);
 
     // this.updatedBook.emit(book);
 
     this.bookService.updateBook(book)
+
       .then(updatedBook => this.updatedBook.emit(updatedBook))
       .catch(console.log);
   }

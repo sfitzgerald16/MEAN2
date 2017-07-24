@@ -8,36 +8,37 @@ import { Book } from '../book';
 
 @Injectable()
 export class BookService {
-  public static base = 'http://59498bce6d49df0011102cfc.mockapi.io/books';
+  // public static base = 'http://59498bce6d49df0011102cfc.mockapi.io/books';
 
   constructor(private _http: Http) {}
 
   getBooks(): Promise<Book[]> {
-    return this._http.get(BookService.base)
+    console.log('books from server');
+    return this._http.get('/books')
       .map(data => data.json())
       .toPromise();
   }
 
   getBook(id: string): Promise<Book> {
-    return this._http.get(`${ BookService.base }/${ id }`)
+    return this._http.get(`/books/${ id }`)
       .map(data => data.json())
       .toPromise();
   }
 
   createBook(book: Book): Promise<Book> {
-    return this._http.post(BookService.base, book)
+    return this._http.post('/books', book)
       .map(data => data.json())
       .toPromise();
   }
 
-  removeBook(id: number): Promise<Book> {
-    return this._http.delete(`${ BookService.base }/${ id }`)
+  removeBook(id: string): Promise<Book> {
+    return this._http.delete(`/books/${ id }`)
       .map(data => data.json())
       .toPromise();
   }
 
   updateBook(book: Book): Promise<Book> {
-    return this._http.put(`${ BookService.base }/${ book.id }`, book)
+    return this._http.put(`/books/${ book._id }`, book)
       .map(data => data.json())
       .toPromise();
   }
