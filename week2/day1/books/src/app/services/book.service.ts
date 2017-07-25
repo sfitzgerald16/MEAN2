@@ -14,31 +14,32 @@ export class BookService {
 
   getBooks(): Promise<Book[]> {
     console.log('books from server');
-    return this._http.get('/books')
+    return this._http.get('/api/books')
       .map(data => data.json())
       .toPromise();
   }
 
   getBook(id: string): Promise<Book> {
-    return this._http.get(`/books/${ id }`)
+    console.log('getting by id', id);
+    return this._http.get(`/api/books/${ id }`)
       .map(data => data.json())
       .toPromise();
   }
 
   createBook(book: Book): Promise<Book> {
-    return this._http.post('/books', book)
+    return this._http.post('/api/books', book)
       .map(data => data.json())
       .toPromise();
   }
 
   removeBook(id: string): Promise<Book> {
-    return this._http.delete(`/books/${ id }`)
+    return this._http.delete(`/api/books/${ id }`)
       .map(data => data.json())
       .toPromise();
   }
 
   updateBook(book: Book): Promise<Book> {
-    return this._http.put(`/books/${ book._id }`, book)
+    return this._http.put(`/api/books/${ book._id }`, book)
       .map(data => data.json())
       .toPromise();
   }

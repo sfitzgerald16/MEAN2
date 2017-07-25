@@ -10,6 +10,9 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 require('./server/config/database');
 
-app.use('/books', require('./server/config/routes/book.routes'));
+app.use('/api/books', require('./server/config/routes/book.routes'));
+
+const catchAll = require('./server/config/routes/catch-all.routes');
+app.use(catchAll);
 
 app.listen(port, () => console.log(`listening on port ${ port }`));

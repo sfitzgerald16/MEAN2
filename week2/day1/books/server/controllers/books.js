@@ -24,7 +24,13 @@ module.exports = {
         console.log(error);
       })
   },
-  show(request, response) {},
+  show(request, response) {
+    Book.findById(request.params.id)
+      .then(function(book) {
+        response.json(book);
+      })
+      .catch(console.log);
+  },
   update(request, response) {
     Book.findByIdAndUpdate(request.params.id, request.body, { new: true })
       .then(function(book) {
@@ -33,5 +39,11 @@ module.exports = {
       })
       .catch(console.log);
   },
-  destroy(request, response) {},
+  destroy(request, response) {
+    Book.findByIdAndRemove(request.params.id)
+      .then(function(book) {
+        response.json(book);
+      })
+      .catch(console.log);
+  },
 };

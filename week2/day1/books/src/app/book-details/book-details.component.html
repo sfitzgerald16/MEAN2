@@ -31,6 +31,6 @@
       </div>
     </div>
     <button [disabled]='updateBook.invalid' [hidden]='updateBook.invalid' class="btn btn-md btn-success">Update</button>
-    <button (click)='this.book = null' class='btn pull-right btn-success'>Cancel</button>
+    <button routerLink='/books' (click)='this.book = null' class='btn pull-right btn-success'>Cancel</button>
   </form>
 </fieldset>

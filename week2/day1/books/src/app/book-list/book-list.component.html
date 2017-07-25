@@ -1,5 +1,5 @@
-<h1>Hello World!</h1>
-<app-book-form (bookEmitter) = 'bookListener($event)'></app-book-form>
+
+<!-- <app-book-form (bookEmitter) = 'bookListener($event)'></app-book-form> -->
 <table class="table table-striped">
   <thead>
     <tr>
@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr (click) = 'onSelect(book)' *ngFor='let book of books | search:filter' [class.selected]='selectedBook === book' >
+    <tr [routerLink]="['/books', book._id]" *ngFor='let book of books | search:filter' [class.selected]='selectedBook === book' >
       <td>{{book._id}}</td>
       <td>{{book.title | titleize:['of', 'a']}}</td>
       <td>{{book.year}}</td>
@@ -24,4 +24,4 @@
     </tr>
   </tbody>
 </table>
-<book-details (updatedBook)='updateSelectedBook($event)' [book]='selectedBook'></book-details>
+<!-- <book-details (updatedBook)='updateSelectedBook($event)' [book]='selectedBook'></book-details> -->

@@ -9,8 +9,11 @@ import { TitleizePipe } from './titleize.pipe';
 import { SearchPipe } from './search.pipe';
 import { BookFormComponent } from './book-form/book-form.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { NavComponent } from './nav/nav.component';
 
 import { BookService } from './services/book.service';
+
+import { AppRoutingModule } from './app-routing.module';
 
 // TitleizePipe.skipWords = ['of'];
 
@@ -22,11 +25,13 @@ import { BookService } from './services/book.service';
     SearchPipe,
     BookFormComponent,
     BookDetailsComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    AppRoutingModule,
   ],
   providers: [
     BookService,
