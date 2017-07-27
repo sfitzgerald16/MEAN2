@@ -22,11 +22,16 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "bcrypt-as-promised": "^1.1.0",
     "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
     "core-js": "^2.4.1",
     "express": "^4.15.3",
+    "express-session": "^1.15.4",
     "mongoose": "^4.11.4",
+    "ngx-cookie": "^1.0.0",
     "rxjs": "^5.1.0",
+    "validator": "^8.0.0",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
