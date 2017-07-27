@@ -10,8 +10,15 @@ import { SearchPipe } from './search.pipe';
 import { BookFormComponent } from './book-form/book-form.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { NavComponent } from './nav/nav.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
+import { AuthorListComponent } from './authors/author-list/author-list.component';
+import { AuthorFormComponent } from './authors/author-form/author-form.component';
+
+
 
 import { BookService } from './services/book.service';
+import { AuthorService } from './services/author.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -26,6 +33,9 @@ import { AppRoutingModule } from './app-routing.module';
     BookFormComponent,
     BookDetailsComponent,
     NavComponent,
+    NotFoundComponent,
+    AuthorListComponent,
+    AuthorFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +45,7 @@ import { AppRoutingModule } from './app-routing.module';
   ],
   providers: [
     BookService,
+    AuthorService,
   ],
   bootstrap: [AppComponent]
 })

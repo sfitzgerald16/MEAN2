@@ -38,7 +38,7 @@ export class BookListComponent implements OnInit {
 
   titleCaseAuthors(): void {
     this.books.forEach(book => {
-      book.author = this.titleize.transform(book.author);
+      book.author.name = this.titleize.transform(book.author.name);
     });
   }
 

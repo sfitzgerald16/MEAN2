@@ -1,19 +1,28 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 
 import { BookService } from '../services/book.service';
+import { AuthorService } from '../services/author.service';
 import { Book } from '../book';
+import { Author } from '../author';
 
 @Component({
   selector: 'app-book-form',
   templateUrl: './book-form.component.html'
 })
 
-export class BookFormComponent {
+export class BookFormComponent implements OnInit {
   @Output() bookEmitter = new EventEmitter<Book>();
 
   book: Book = new Book();
+  authors: Array<Author> = [];
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService, private authorService: AuthorService) {}
+
+  ngOnInit() {
+    this.authorService.getAuthors()
+      .then(authors => this.authors = authors)
+      .catch(() => {});
+  }
 
   onSubmit(form): void {
     // event.preventDefault();

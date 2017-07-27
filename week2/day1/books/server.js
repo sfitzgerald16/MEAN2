@@ -11,6 +11,7 @@ app.use(express.static(path.join(__dirname, 'dist')));
 require('./server/config/database');
 
 app.use('/api/books', require('./server/config/routes/book.routes'));
+app.use('/api/authors', require('./server/config/routes/author.routes'));
 
 const catchAll = require('./server/config/routes/catch-all.routes');
 app.use(catchAll);

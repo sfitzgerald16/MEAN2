@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -11,9 +12,10 @@ import { Book } from '../book';
   templateUrl: './book-details.component.html',
 })
 
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent implements OnInit, OnDestroy {
   // @Input()
   book: Book;
+  subscription: Subscription;
 
   @Output() updatedBook = new EventEmitter<Book>();
 
@@ -21,11 +23,15 @@ export class BookDetailsComponent implements OnInit {
 
   ngOnInit() {
     console.log('on init')
-    const waht = this.route.paramMap
+    this.subscription = this.route.paramMap
       .switchMap(param =>
         this.bookService.getBook(param.get('_id'))
       )
       .subscribe(book => this.book = book);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   onUpdate(book: Book, event: Event) {
